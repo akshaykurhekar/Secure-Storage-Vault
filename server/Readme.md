@@ -26,4 +26,8 @@ $ go run main.go
 
 ## pacakages used
 
-require github.com/gorilla/mux v1.8.1 
+- github.com/gorilla/mux@v1.8.1 
+
+- database/sql
+- log
+- modernc.org/sqlite@v1.30.1

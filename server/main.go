@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"net/http"
     "server/routes"
+    "server/db"
 )
 
 
 func main() {
 	
-
+    db.Init()
     //setup router
-
     router := routes.SetUpRoutes()
 	
     // define the port to listen on
