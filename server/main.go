@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"net/http"
-    "server/routes"
-    "server/db"
+	"server/db"
+	"server/routes"
+
+	"github.com/gorilla/handlers"
 )
 
 
@@ -15,11 +17,15 @@ func main() {
     router := routes.SetUpRoutes()
 	
     // define the port to listen on
-    port := "4000"
+    port := "5000"
     fmt.Printf("Starting server at port %s\n", port)
 
     // start the HTTP server
-    if err := http.ListenAndServe(":"+port, router); err != nil {
+    if err := http.ListenAndServe(":"+port, handlers.CORS(
+		handlers.AllowedOrigins([]string{"*"}),
+		handlers.AllowedMethods([]string{"GET","POST","DELETE","PUT","OPTIONS"}),
+		handlers.AllowedHeaders([]string{"X-Requested-With","Content-Type"}),
+	)(router)); err != nil {
         fmt.Printf("Error starting server: %s\n", err)
     }
 
