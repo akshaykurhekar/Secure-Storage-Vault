@@ -31,3 +31,17 @@ $ go run main.go
 - database/sql
 - log
 - modernc.org/sqlite@v1.30.1
+
+## SQL query 
+
+## create vault
+"INSERT INTO vault (name, password, desc) VALUES (?,?,?)"
+
+## get vault
+"SELECT id, name, password, desc FROM vault"
+
+## create credential
+"INSERT INTO credentials (uid, credential) VALUES (?,?)"
+
+## get credential by vaultId
+"SELECT id, uid, credential FROM credentials where uid = ?",intUid

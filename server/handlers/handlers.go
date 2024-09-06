@@ -51,10 +51,7 @@ func GetAllVaults(res http.ResponseWriter, req *http.Request) {
 	json.NewEncoder(res).Encode(vaults)
 }
 
-// - getVaultById:id - get
-
 // - createVault: post { name, password, desc }
-
 func CreateVault(res http.ResponseWriter, req *http.Request) {
 	// define model
 	var vault models.Vault
@@ -100,12 +97,13 @@ func CreateVault(res http.ResponseWriter, req *http.Request) {
 	json.NewEncoder(res).Encode(vault)
 }
 
+// - getVaultById:id - get
 // - updateVault:id put { name, password, desc }
-
 // - deleteVault:id delete
 
-// - getAllCredentials
-// - getCredentialByVaultId:vid - get
 // - createCredential: post - { vid, credential: { name:"xyz", cid:"ejgweufifgh" } }
+// - getAllCredentials
+
+// - getCredentialByVaultId:vid - get
 // - updateCredentialById:id put - { "credential": { name:"xyz", cid:"ejgweufifgh" } }
 // - deleteCredentialById:id delete 
