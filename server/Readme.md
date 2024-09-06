@@ -45,3 +45,16 @@ $ go run main.go
 
 ## get credential by vaultId
 "SELECT id, uid, credential FROM credentials where uid = ?",intUid
+
+
+## updat query example
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+ex: "UPDATE vault SET name = ?, password = ?, desc = ? WHERE id = ?"
+
+## delete query example
+DELETE FROM table_name WHERE condition;
+
+ex: "DELETE FROM valut WHERE id=?"

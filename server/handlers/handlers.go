@@ -97,7 +97,6 @@ func CreateVault(res http.ResponseWriter, req *http.Request) {
 	json.NewEncoder(res).Encode(vault)
 }
 
-// - getVaultById:id - get
 // - updateVault:id put { name, password, desc }
 // - deleteVault:id delete
 
