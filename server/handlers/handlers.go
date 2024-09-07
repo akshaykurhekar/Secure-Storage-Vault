@@ -97,12 +97,13 @@ func CreateVault(res http.ResponseWriter, req *http.Request) {
 	json.NewEncoder(res).Encode(vault)
 }
 
+// =================== HOMEWORK ====================
+
 // - updateVault:id put { name, password, desc }
 // - deleteVault:id delete
 
 // - createCredential: post - { vid, credential: { name:"xyz", cid:"ejgweufifgh" } }
-// - getAllCredentials
-
 // - getCredentialByVaultId:vid - get
+
 // - updateCredentialById:id put - { "credential": { name:"xyz", cid:"ejgweufifgh" } }
 // - deleteCredentialById:id delete 

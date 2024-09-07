@@ -41,10 +41,10 @@ $ go run main.go
 "SELECT id, name, password, desc FROM vault"
 
 ## create credential
-"INSERT INTO credentials (uid, credential) VALUES (?,?)"
+"INSERT INTO credentials (vid, credential) VALUES (?,?)"
 
 ## get credential by vaultId
-"SELECT id, uid, credential FROM credentials where uid = ?",intUid
+"SELECT id, uid, credential FROM credentials where vid = ?",intUid
 
 
 ## updat query example
