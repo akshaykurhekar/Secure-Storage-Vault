@@ -57,4 +57,4 @@ ex: "UPDATE vault SET name = ?, password = ?, desc = ? WHERE id = ?"
 ## delete query example
 DELETE FROM table_name WHERE condition;
 
-ex: "DELETE FROM valut WHERE id=?"
+ex: "DELETE FROM vault WHERE id=?"

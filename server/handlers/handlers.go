@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"server/db"
 	models "server/models"
+
+	"github.com/gorilla/mux"
 )
 
 
@@ -100,7 +102,91 @@ func CreateVault(res http.ResponseWriter, req *http.Request) {
 // =================== HOMEWORK ====================
 
 // - updateVault:id put { name, password, desc }
+func UpdateVault(res http.ResponseWriter, req *http.Request) {
+	
+	params := mux.Vars(req) // Get URL parameters
+	id := params["id"]
+
+	var vault models.Vault
+	if err := json.NewDecoder(req.Body).Decode(&vault); err != nil {
+		http.Error(res, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	DB := db.OpenConn()
+	if DB == nil {
+		http.Error(res, "Database Init fail..!", http.StatusInternalServerError)
+		return
+	}
+
+	// write insert query
+	insertVault, err := DB.Prepare("UPDATE vault SET name = ?, password = ?, desc = ? WHERE id = ?"); 
+	if err != nil {
+		http.Error(res, "Falied to prepare vault update query", http.StatusInternalServerError)
+		return
+	}
+	
+	defer insertVault.Close()
+
+	// // exec query
+
+	result, err := insertVault.Exec(vault.Name, vault.Password, vault.Desc, id)
+	if err != nil {
+		http.Error(res, "Falied to Exec update query..!", http.StatusInternalServerError)
+		return
+	}	
+
+	rowsAffected, _ := result.RowsAffected()
+    if rowsAffected == 0 {
+        res.WriteHeader(http.StatusNotFound)
+        json.NewEncoder(res).Encode(map[string]string{"error": "Item not found"})
+        return
+    }
+
+	res.Header().Set("Content-Type", "application/json")
+	res.WriteHeader(200);
+    json.NewEncoder(res).Encode(map[string]string{"message": "Item updated successfully"})
+}
+
 // - deleteVault:id delete
+func DeleteVaultById(res http.ResponseWriter, req *http.Request) {
+	params := mux.Vars(req) // Get URL parameters
+    id := params["id"]
+
+	DB := db.OpenConn()
+	if DB == nil {
+		http.Error(res, "Database Init fail..!", http.StatusInternalServerError)
+		return
+	}
+
+	// write insert query
+	query, err := DB.Prepare("DELETE FROM vault WHERE id = ?"); 
+	if err != nil {
+		http.Error(res, "Falied to prepare Delete Vault query", http.StatusInternalServerError)
+		return
+	}
+	
+	defer query.Close()
+
+	// // exec query
+
+	result, err := query.Exec(id)
+	if err != nil {
+		http.Error(res, "Falied to Delete vault by this id : "+ id, http.StatusInternalServerError)
+		return
+	}	
+
+	rowsAffected, _ := result.RowsAffected()
+    if rowsAffected == 0 {
+        res.WriteHeader(http.StatusNotFound)
+        json.NewEncoder(res).Encode(map[string]string{"error": "Item not found"})
+        return
+    }
+
+	res.Header().Set("Content-Type", "application/json")
+	res.WriteHeader(200);
+    json.NewEncoder(res).Encode(map[string]string{"message": "Item deleted successfully"})
+}
 
 // - createCredential: post - { vid, credential: { name:"xyz", cid:"ejgweufifgh" } }
 // - getCredentialByVaultId:vid - get
