@@ -1,0 +1,132 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "secure-vault-backend-api",
+    "collectionId": "94e92d17-636a-49bf-8503-75499b161d2f",
+    "dateExported": "2024-09-10T01:58:32.085Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "b635dd3e-fc3e-4085-8223-7f85c64fd79a",
+            "colId": "94e92d17-636a-49bf-8503-75499b161d2f",
+            "containerId": "",
+            "name": "getAllVaults",
+            "url": "http://localhost:5000/get/vaults",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-08-15T12:19:46.104Z",
+            "modified": "2024-09-09T02:42:24.046Z",
+            "headers": []
+        },
+        {
+            "_id": "d8da240e-2f8f-49b4-bed6-83b3621ca983",
+            "colId": "94e92d17-636a-49bf-8503-75499b161d2f",
+            "containerId": "",
+            "name": "getAllCredentialsByVid",
+            "url": "http://localhost:5000/get/credentials/1",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2024-09-10T01:45:19.523Z",
+            "modified": "2024-09-10T01:53:11.391Z",
+            "headers": []
+        },
+        {
+            "_id": "2fc8f31c-fb0a-43ed-84d3-1cae19ea5ed3",
+            "colId": "94e92d17-636a-49bf-8503-75499b161d2f",
+            "containerId": "",
+            "name": "createVault",
+            "url": "http://localhost:5000/create/vault",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-08-15T12:19:50.701Z",
+            "modified": "2024-09-07T01:30:53.905Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"Name\":\"Personal Doc\",\n  \"Password\":\"999\",\n  \"Desc\":\"doc....\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "3edab384-3d06-4080-9e0a-094f09b2ca14",
+            "colId": "94e92d17-636a-49bf-8503-75499b161d2f",
+            "containerId": "",
+            "name": "createCredential",
+            "url": "http://localhost:5000/create/credentials",
+            "method": "POST",
+            "sortNum": 25000,
+            "created": "2024-09-10T01:45:22.926Z",
+            "modified": "2024-09-10T01:49:52.694Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"VId\":1,\n  \"Credential\": {\"Name\":\"GYM ID Card\", \"Cid\":\"08765436546\"}\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "dd9056f6-a60a-4091-99b9-1ec93697bc3a",
+            "colId": "94e92d17-636a-49bf-8503-75499b161d2f",
+            "containerId": "",
+            "name": "updateVault",
+            "url": "http://localhost:5000/update/vault/6",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-09-09T02:42:31.307Z",
+            "modified": "2024-09-09T02:45:34.980Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"Name\":\"Personal Doc 06\",\n  \"Password\":\"999\",\n  \"Desc\":\"doc....\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "9e440015-868f-4b27-8ffa-cc4f3c8b026f",
+            "colId": "94e92d17-636a-49bf-8503-75499b161d2f",
+            "containerId": "",
+            "name": "updateCredentials",
+            "url": "http://localhost:5000/update/credential/2",
+            "method": "PUT",
+            "sortNum": 35000,
+            "created": "2024-09-10T01:42:17.310Z",
+            "modified": "2024-09-10T01:55:15.855Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"VId\":1,\n  \"Credential\": {\"Name\":\"GYM ID Card\", \"Cid\":\"08765436546xx\"}\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "4b6bf44d-1f49-49b3-8e42-a89b80c3b1d0",
+            "colId": "94e92d17-636a-49bf-8503-75499b161d2f",
+            "containerId": "",
+            "name": "deleteVault",
+            "url": "http://localhost:5000/delete/vault/6",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-09-09T02:45:55.580Z",
+            "modified": "2024-09-09T02:46:22.644Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"Name\":\"Personal Doc 06\",\n  \"Password\":\"999\",\n  \"Desc\":\"doc....\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "660406c8-6ca4-4ebc-8c32-6eff06ede58e",
+            "colId": "94e92d17-636a-49bf-8503-75499b161d2f",
+            "containerId": "",
+            "name": "deleteCredential",
+            "url": "http://localhost:5000/delete/credential/2",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-09-10T01:42:20.403Z",
+            "modified": "2024-09-10T01:58:17.785Z",
+            "headers": []
+        }
+    ],
+    "ref": "5jlFsw442C0wIhfOkSpZQP6CKJAwff5RLHput0PofmoAQo8nmPJsUXoML5VRic37nm8i9AAKIxYdc01YheZs0A"
+}
