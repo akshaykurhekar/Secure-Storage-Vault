@@ -7,7 +7,7 @@ function UploadFile({ setFileResponse, fileName }) {
   };
 
   const handleSubmission = async () => {
-    const token =
+    const token = 
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJlMjgwNmYyMy1lMWJiLTRlYjEtYTBmNS1kYzhmZTM4NzM3YTgiLCJlbWFpbCI6ImFrc2hheS5rdXJoZWthcjEwMTQ2NjJAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siaWQiOiJGUkExIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6ImNjYjdmMDVmMmJiYzVlOTc0ZTc3Iiwic2NvcGVkS2V5U2VjcmV0IjoiYTkzMDhkNDU1YjZkN2RhMzM3NWEyYjIzY2I0OTVmMWUxNzJmNmJiMjdjMDQ0YjI4YWFkYjFjZGYzMGFmMGY2YiIsImlhdCI6MTcxODYwNTI5N30.3V5ruShYqMhibSuJxHeB2UFDggbRt5YrJFoz0hYBU-0";
     console.log("token:", token);
     try {
