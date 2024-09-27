@@ -1,23 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import Header from "./component/navbar";
+import BoxCard from "./component/card";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import AddCredential from "./component/addCredentialModal";
+import AddVault from "./component/addVaultModal";
+import { getAllVault } from "./api";
 
 function App() {
+  const [users, setUsers] = useState([]);
+  const [showModel, setShowModel] = useState(false);
+
+  useEffect( () => {
+    axios.get("http://localhost:5000/get/vaults").then((result)=>{
+      console.log(result.data);
+      setUsers(result.data);
+    })
+    console.log("VAULT::",users)
+    // setUsers(aa)
+  }, []);
+
+  const getCredential = async () => {
+    axios.get("http://localhost:5000/get/vaults").then((result)=>{
+      console.log(result.data);
+      setUsers(result.data);
+    })
+    console.log("VAULTS LIST:",users);
+  };
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Vault Client code ...
-        </a>
-      </header>
+      <Header />
+      <div style={{ padding: "10px" }}>
+        <Button style={{ margin: "10px" }} onClick={getCredential}>
+          Get All Vaults
+        </Button>
+        <AddCredential />
+        <AddVault />
+      </div>
+      <Container>
+        <Col style={{ marginTop: "1rem", padding: "1rem" }}>
+          { users !== null ? (
+            users.map((item) => {
+              return (
+                <Row key={item.id} style={{ marginTop: "1rem" }}>
+                  {" "}
+                  <BoxCard
+                    key={item.id}
+                    name={item.name}
+                    email={item.email}
+                    id={item.id}
+                    password={item.password}
+                  />
+                </Row>
+              );
+            })
+          ) : (
+            <p>No credential Found</p>
+          )}
+        </Col>
+      </Container>
     </div>
   );
 }
