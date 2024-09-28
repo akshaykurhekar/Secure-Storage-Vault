@@ -1,13 +1,16 @@
 import { useState } from "react";
 
 function UploadFile({ setFileResponse, fileName }) {
+  
   const [selectedFile, setSelectedFile] = useState();
+  const [response, setResponse] = useState(null);
+  
   const changeHandler = (event) => {
     setSelectedFile(event.target.files);
   };
 
   const handleSubmission = async () => {
-    const token = process.env.JWT_Token;
+    const token = process.env.REACT_APP_JWT_TOKEN;
     console.log("token:", token);
 
     try {
@@ -37,6 +40,7 @@ function UploadFile({ setFileResponse, fileName }) {
       );
       const resData = await res.json();
       setFileResponse(resData);
+      setResponse(resData);
       console.log("Success", resData);
     } catch (error) {
       console.log(error);
@@ -48,6 +52,9 @@ function UploadFile({ setFileResponse, fileName }) {
       <label className="form-label"> Choose File : </label>
       <input type="file" onChange={changeHandler} accept=".png, .jpg, .mp3" />
       <button onClick={handleSubmission}>Submit</button>
+      <div style={{ margin: "5px",color:"gray" }}>
+      {response != null ? <textarea value={JSON.stringify(response)} rows="5" cols="50"> </textarea>  : ""}
+      </div>
     </div>
   );
 }
